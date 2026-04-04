@@ -71,10 +71,10 @@ A comprehensive Postman collection is provided at `example/JWT-Security-Workshop
 
 | RFC | Title | Focus |
 |---|---|---|
-| **7519** | JSON Web Token (JWT) | The Core Standard |
-| **8725** | JWT Best Current Practices | Vulnerability Prevention |
-| **9068** | JWT Profile for OAuth 2.0 Access Tokens | Standard Interoperability |
-| **9449** | OAuth 2.0 DPoP | Proof-of-Possession binding |
+| [**7519**](https://datatracker.ietf.org/doc/html/rfc7519) | JSON Web Token (JWT) | The Core Standard |
+| [**8725**](https://datatracker.ietf.org/doc/html/rfc8725) | JWT Best Current Practices | Vulnerability Prevention |
+| [**9068**](https://datatracker.ietf.org/doc/html/rfc9068) | JWT Profile for OAuth 2.0 Access Tokens | Standard Interoperability |
+| [**9449**](https://datatracker.ietf.org/doc/html/rfc9449) | OAuth 2.0 DPoP | Proof-of-Possession binding |
 
 ---
 

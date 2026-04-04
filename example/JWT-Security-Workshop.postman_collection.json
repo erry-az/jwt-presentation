@@ -1,0 +1,373 @@
+{
+	"info": {
+		"_postman_id": "3f1825c9-2831-46f5-97be-5dbfa4c4f591",
+		"name": "JWT Security Workshop",
+		"description": "Collection for testing JWT security presentation examples including standard JWS, vulnerabilities (alg:none, Key Confusion), official fixes (BCP), and DPoP (RFC 9449).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Part 1: The Standard",
+			"item": [
+				{
+					"name": "Issue Standard Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/standard",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"standard"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () { pm.response.to.have.status(200); });",
+									"pm.test(\"Token received\", function () { pm.expect(pm.response.json().access_token).to.be.a('string'); });",
+									"",
+									"// Capture the token for subsequent requests",
+									"pm.environment.set(\"access_token\", pm.response.json().access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					]
+				},
+				{
+					"name": "Access Classic Resource",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{access_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/data/classic",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"data",
+								"classic"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Part 2: Vulnerabilities",
+			"item": [
+				{
+					"name": "Exploit: alg: none Bypass",
+					"item": [
+						{
+							"name": "Step 1: Get 'alg: none' Token",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/auth/vuln/alg-none",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"auth",
+										"vuln",
+										"alg-none"
+									]
+								}
+							},
+							"response": [],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.environment.set(\"vuln_token_none\", pm.response.json().access_token);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							]
+						},
+						{
+							"name": "Step 2: Bypass Protected Endpoint",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{vuln_token_none}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/data/vuln/alg-none",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"data",
+										"vuln",
+										"alg-none"
+									]
+								}
+							},
+							"response": [],
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Vulnerability Exploited Successfully!\", function () {",
+											"    pm.response.to.have.status(200);",
+											"    pm.expect(pm.response.json().message).to.contain(\"💀\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Exploit: Key Confusion (RSA vs HMAC)",
+					"item": [
+						{
+							"name": "Step 1: Get Public Key (HMAC Secret)",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/v1/public-key",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"v1",
+										"public-key"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Step 2: Attempt Access (Bypass enforcement)",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{access_token}}"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/api/data/vuln/key-confusion",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"api",
+										"data",
+										"vuln",
+										"key-confusion"
+									]
+								}
+							},
+							"response": [],
+							"description": "Note: For this to work in a real attack, you would take the public key from Step 1, craft an HS256 token signing with it, and send it here. The server endpoint here simulates the validation logic mistake."
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Part 3: Official Fixes (BCP)",
+			"item": [
+				{
+					"name": "Issue Secure BCP Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/auth/secure",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"secure"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"secure_token\", pm.response.json().access_token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					]
+				},
+				{
+					"name": "Access Strict Resource",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{secure_token}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/data/strict",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"data",
+								"strict"
+							]
+						}
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Access Granted to Secure Endpoint\", function () { pm.response.to.have.status(200); });"
+								],
+								"type": "text/javascript"
+							}
+						}
+					]
+				},
+				{
+					"name": "View JWKS Metadata",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/.well-known/jwks.json",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								".well-known",
+								"jwks.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Part 4: DPoP Evolution",
+			"item": [
+				{
+					"name": "Issue DPoP Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "DPoP",
+								"value": "{{dpop_proof}}",
+								"description": "Requires a fresh proof signed by client private key."
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/auth/dpop",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"auth",
+								"dpop"
+							]
+						},
+						"description": "This request requires a DPoP header. Since Postman doesn't have native DPoP signing, you should use the provided Go CLI client to generate tokens, or add a pre-request script if library is available."
+					},
+					"response": [],
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"if (pm.response.code === 200) {",
+									"    pm.environment.set(\"dpop_access_token\", pm.response.json().access_token);",
+									"}"
+								],
+								"type": "text/javascript"
+							}
+						}
+					]
+				},
+				{
+					"name": "Access DPoP Protected Resource",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "DPoP {{dpop_access_token}}"
+							},
+							{
+								"key": "DPoP",
+								"value": "{{dpop_proof_fresh}}"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/api/data/dpop",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"data",
+								"dpop"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "RFC 9449 requires two tokens: the Access Token (bound to key) and a fresh DPoP Proof for EVERY request."
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Base URL for the local Go server",
+					"if (!pm.environment.has(\"base_url\")) {",
+					"    pm.environment.set(\"base_url\", \"http://localhost:8080\");",
+					"}"
+				]
+			}
+		}
+	]
+}
