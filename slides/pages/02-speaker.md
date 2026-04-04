@@ -26,7 +26,7 @@ transition: slide-up
 </div>
 
 <div
-  v-motion
+  v-click
   :initial="{ opacity: 0, x: -20 }"
   :enter="{ opacity: 1, x: 0, transition: { duration: 500 } }"
   class="mt-5 p-3 rounded-lg bg-gray-800/50 border border-gray-600/30 text-sm text-gray-300 italic"

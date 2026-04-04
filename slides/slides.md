@@ -12,9 +12,6 @@ transition: slide-left
 highlighter: shiki
 lineNumbers: false
 colorSchema: dark
----
-
----
 src: ./pages/01-cover.md
 ---
 
@@ -36,6 +33,10 @@ src: ./pages/05-glossary.md
 
 ---
 src: ./pages/06-part1-intro.md
+---
+
+---
+src: ./pages/06a-what-jwt.md
 ---
 
 ---

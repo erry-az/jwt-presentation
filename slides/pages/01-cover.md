@@ -1,3 +1,8 @@
+---
+layout: cover
+background: https://cover.sli.dev
+transition: slide-left
+---
 # JWT Best Practices and DPoP
 
 <div class="text-2xl text-gray-300 mt-2">Demonstrating Proof-of-Possession</div>
