@@ -26,7 +26,7 @@ transition: slide-up
   v-motion
   :initial="{ y: 30, opacity: 0 }"
   :enter="{ y: 0, opacity: 1, transition: { delay: 600, duration: 700 } }"
-  class="text-2xl text-green-300 mt-2"
+  class="text-3xl text-green-300 mt-2 font-semibold"
 >
   The Official Fixes
 </div>
@@ -35,7 +35,8 @@ transition: slide-up
   v-motion
   :initial="{ opacity: 0 }"
   :enter="{ opacity: 1, transition: { delay: 900 } }"
-  class="text-gray-400 mt-2"
+  class="text-gray-400 mt-4 italic text-sm max-w-2xl mx-auto"
 >
-  RFC 8725 &amp; RFC 9068
+  "Implementations MUST NOT allow a JWT to be processed if the 'alg' header parameter is 'none'."<br>
+  — RFC 8725 (JWT Best Current Practices)
 </div>

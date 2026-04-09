@@ -19,7 +19,7 @@ transition: slide-left
   :enter="{ y: 0, opacity: 1, transition: { delay: 400, duration: 700 } }"
   class="text-5xl font-bold"
 >
-  Part 2
+  Bagian 2
 </div>
 
 <div
@@ -28,7 +28,7 @@ transition: slide-left
   :enter="{ y: 0, opacity: 1, transition: { delay: 600, duration: 700 } }"
   class="text-3xl text-red-300 mt-2 font-semibold"
 >
-  The Bearer Token Crisis
+  Masalah Besar Bearer Token
 </div>
 
 <div
@@ -37,6 +37,6 @@ transition: slide-left
   :enter="{ opacity: 1, transition: { delay: 900 } }"
   class="text-gray-400 mt-4 italic text-sm max-w-2xl mx-auto"
 >
-  "Any party in possession of a bearer token (a 'bearer') can use it to get access to the associated resources."<br>
+  "Siapa pun yang pegang bearer token (seorang 'bearer') bisa pakainya buat dapetin akses ke sumber daya yang dimaksud."<br>
   — RFC 6750
 </div>

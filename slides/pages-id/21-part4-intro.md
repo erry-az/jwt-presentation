@@ -6,11 +6,11 @@ transition: slide-left
 
 <div
   v-motion
-  :initial="{ scale: 0.3, rotate: -10, opacity: 0 }"
-  :enter="{ scale: 1, rotate: 0, opacity: 1, transition: { type: 'spring', stiffness: 150, damping: 12 } }"
+  :initial="{ scale: 0.3, opacity: 0 }"
+  :enter="{ scale: 1, opacity: 1, transition: { type: 'spring', stiffness: 200, damping: 15 } }"
   class="text-6xl mb-4"
 >
-  ⚠️
+  🚀
 </div>
 
 <div
@@ -19,16 +19,16 @@ transition: slide-left
   :enter="{ y: 0, opacity: 1, transition: { delay: 400, duration: 700 } }"
   class="text-5xl font-bold"
 >
-  Part 2
+  Bagian 4
 </div>
 
 <div
   v-motion
   :initial="{ y: 30, opacity: 0 }"
   :enter="{ y: 0, opacity: 1, transition: { delay: 600, duration: 700 } }"
-  class="text-3xl text-red-300 mt-2 font-semibold"
+  class="text-3xl text-purple-300 mt-2 font-semibold"
 >
-  The Bearer Token Crisis
+  Evolusi Keamanan (DPoP)
 </div>
 
 <div
@@ -37,6 +37,6 @@ transition: slide-left
   :enter="{ opacity: 1, transition: { delay: 900 } }"
   class="text-gray-400 mt-4 italic text-sm max-w-2xl mx-auto"
 >
-  "Any party in possession of a bearer token (a 'bearer') can use it to get access to the associated resources."<br>
-  — RFC 6750
+  "Mekanisme buat ngebatesin siapa yang boleh pakai token lewat pembuktian kepemilikan (Proof-of-Possession) di level aplikasi."<br>
+  — RFC 9449
 </div>

@@ -26,16 +26,17 @@ transition: slide-left
   v-motion
   :initial="{ y: 30, opacity: 0 }"
   :enter="{ y: 0, opacity: 1, transition: { delay: 600, duration: 700 } }"
-  class="text-2xl text-purple-300 mt-2"
+  class="text-3xl text-purple-300 mt-2 font-semibold"
 >
-  The DPoP Evolution
+  The Zero-Trust Evolution
 </div>
 
 <div
   v-motion
   :initial="{ opacity: 0 }"
   :enter="{ opacity: 1, transition: { delay: 900 } }"
-  class="text-gray-400 mt-2"
+  class="text-gray-400 mt-4 italic text-sm max-w-2xl mx-auto"
 >
-  RFC 9449 — Demonstrating Proof-of-Possession
+  "A mechanism for sender-constraining OAuth 2.0 tokens via a proof-of-possession mechanism on the application level."<br>
+  — RFC 9449
 </div>

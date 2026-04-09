@@ -24,14 +24,6 @@ src: ./pages/03-agenda.md
 ---
 
 ---
-src: ./pages/04-rfc-citations.md
----
-
----
-src: ./pages/05-glossary.md
----
-
----
 src: ./pages/06-part1-intro.md
 ---
 
@@ -113,4 +105,23 @@ src: ./pages/24-bearer-vs-dpop.md
 
 ---
 src: ./pages/25-summary.md
+---
+
+---
+layout: center
+class: text-center
+---
+
+# Appendix
+
+<div class="mt-4 text-gray-400">
+  Reference materials and definitions
+</div>
+
+---
+src: ./pages/04-rfc-citations.md
+---
+
+---
+src: ./pages/05-glossary.md
 ---

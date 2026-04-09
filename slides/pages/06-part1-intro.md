@@ -17,9 +17,19 @@ transition: slide-up
   v-motion
   :initial="{ y: 30, opacity: 0 }"
   :enter="{ y: 0, opacity: 1, transition: { delay: 300, duration: 700 } }"
-  class="text-2xl text-blue-300"
+  class="text-3xl text-blue-300 font-semibold"
 >
-  The Standard (RFC 7519)
+  The Stateless Dream
+</div>
+
+<div
+  v-motion
+  :initial="{ opacity: 0 }"
+  :enter="{ opacity: 1, transition: { delay: 900 } }"
+  class="text-gray-400 mt-4 italic text-sm max-w-2xl mx-auto"
+>
+  "A compact, URL-safe means of representing claims to be transferred between two parties."<br>
+  — RFC 7519
 </div>
 
 <style>
