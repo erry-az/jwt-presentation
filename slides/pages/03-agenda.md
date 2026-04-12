@@ -23,7 +23,7 @@ transition: fade-out
   class="p-5 rounded-xl border border-blue-400/30 bg-blue-900/20"
 >
   <div class="text-blue-400 text-lg font-bold mb-2">📋 Part 1</div>
-  <div class="text-white font-semibold">The Standard</div>
+  <div class="text-white font-semibold">The Stateless Dream</div>
   <div class="text-gray-400 text-sm">RFC 7519 — JWT Anatomy & Security</div>
 </div>
 
@@ -34,7 +34,7 @@ transition: fade-out
   class="p-5 rounded-xl border border-red-400/30 bg-red-900/20"
 >
   <div class="text-red-400 text-lg font-bold mb-2">⚠️ Part 2</div>
-  <div class="text-white font-semibold">The Vulnerabilities</div>
+  <div class="text-white font-semibold">The Bearer Token Crisis</div>
   <div class="text-gray-400 text-sm">Where Bearer Tokens Fall Short</div>
 </div>
 
@@ -56,7 +56,7 @@ transition: fade-out
   class="p-5 rounded-xl border border-purple-400/30 bg-purple-900/20"
 >
   <div class="text-purple-400 text-lg font-bold mb-2">🚀 Part 4</div>
-  <div class="text-white font-semibold">The DPoP Evolution</div>
+  <div class="text-white font-semibold">The Zero-Trust Evolution</div>
   <div class="text-gray-400 text-sm">RFC 9449 — Proof-of-Possession</div>
 </div>
 

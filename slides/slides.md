@@ -40,6 +40,10 @@ src: ./pages/08-jwt-anatomy-details.md
 ---
 
 ---
+src: ./pages/08a-interaction-crypto.md
+---
+
+---
 src: ./pages/09-crypto-101.md
 ---
 
@@ -60,6 +64,10 @@ src: ./pages/13-part2-intro.md
 ---
 
 ---
+src: ./pages/13a-interaction-storage.md
+---
+
+---
 src: ./pages/14-client-side-storage-risks.md
 ---
 
@@ -76,6 +84,10 @@ src: ./pages/17-part3-intro.md
 ---
 
 ---
+src: ./pages/17a-interaction-security.md
+---
+
+---
 src: ./pages/18-ietf-best-practices.md
 ---
 
@@ -89,6 +101,10 @@ src: ./pages/20-jwks.md
 
 ---
 src: ./pages/21-part4-intro.md
+---
+
+---
+src: ./pages/21a-interaction-theft.md
 ---
 
 ---
